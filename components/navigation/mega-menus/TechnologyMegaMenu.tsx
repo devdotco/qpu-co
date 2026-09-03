@@ -11,20 +11,20 @@ const architectureLinks = [
 ]
 
 const conceptLinks = [
-  { href: '/learn/qubits', label: 'Qubits' },
-  { href: '/learn/gates', label: 'Gates' },
-  { href: '/learn/entanglement', label: 'Entanglement' },
-  { href: '/learn/coherence', label: 'Coherence' },
-  { href: '/learn/error-correction', label: 'Error Correction' },
-  { href: '/learn/logical-qubits', label: 'Logical Qubits' },
+  { href: '/what-is-a-qpu', label: 'What Is a QPU?' },
+  { href: '/qpu-vs-gpu', label: 'QPU vs GPU' },
+  { href: '/learn', label: 'Learning Hub' },
+  { href: '/glossary', label: 'Glossary' },
+  { href: '/data-sources', label: 'Data Sources' },
+  { href: '/methodology', label: 'Methodology' },
 ]
 
 const hardwareLinks = [
-  { href: '/technology/control-systems', label: 'Control Systems' },
-  { href: '/technology/cryogenics', label: 'Cryogenics' },
-  { href: '/technology/lasers', label: 'Lasers' },
-  { href: '/technology/readout', label: 'Readout' },
-  { href: '/technology/quantum-networking', label: 'Quantum Networking' },
+  { href: '/benchmarks', label: 'Benchmarks' },
+  { href: '/availability', label: 'Availability' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/roadmaps', label: 'Hardware Roadmaps' },
+  { href: '/providers', label: 'Providers' },
 ]
 
 // SVG: 6 architecture types radiating from center
@@ -107,9 +107,9 @@ export default function TechnologyMegaMenu() {
         </ul>
       </div>
 
-      {/* Column 2: Quantum Concepts */}
+      {/* Column 2: Learn */}
       <div>
-        <p className="mono-label mb-3">Quantum Concepts</p>
+        <p className="mono-label mb-3">Learn</p>
         <ul className="space-y-1">
           {conceptLinks.map(link => (
             <li key={link.href}>
@@ -124,9 +124,9 @@ export default function TechnologyMegaMenu() {
         </ul>
       </div>
 
-      {/* Column 3: Hardware */}
+      {/* Column 3: Data */}
       <div>
-        <p className="mono-label mb-3">Hardware</p>
+        <p className="mono-label mb-3">Data</p>
         <ul className="space-y-1">
           {hardwareLinks.map(link => (
             <li key={link.href}>

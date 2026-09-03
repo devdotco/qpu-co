@@ -3,10 +3,10 @@ import { ArrowRight, Code2, Globe } from 'lucide-react'
 
 const buildLinks = [
   { href: '/developers', label: 'Developer Overview' },
-  { href: '/developers/api', label: 'API' },
-  { href: '/developers/examples', label: 'Code Examples' },
-  { href: '/developers/sdks', label: 'SDKs' },
-  { href: '/developers/github', label: 'GitHub', external: true },
+  { href: '/api', label: 'API' },
+  { href: '/frameworks', label: 'SDKs & Frameworks' },
+  { href: '/developers', label: 'Code Examples' },
+  { href: 'https://github.com/devdotco/qpu-co', label: 'GitHub', external: true },
 ]
 
 const frameworkLinks = [
@@ -15,14 +15,14 @@ const frameworkLinks = [
   { href: '/frameworks/cuda-q', label: 'CUDA-Q' },
   { href: '/frameworks/pennylane', label: 'PennyLane' },
   { href: '/frameworks/q-sharp', label: 'Q#' },
-  { href: '/frameworks/braket-sdk', label: 'Braket SDK' },
+  { href: '/frameworks/amazon-braket-sdk', label: 'Braket SDK' },
 ]
 
 const toolLinks = [
-  { href: '/tools/circuit-explorer', label: 'Circuit Explorer' },
   { href: '/qpu-advisor', label: 'QPU Advisor' },
-  { href: '/tools/architecture-finder', label: 'Architecture Finder' },
+  { href: '/compare', label: 'Compare QPUs' },
   { href: '/benchmarks', label: 'Benchmark Explorer' },
+  { href: '/architectures', label: 'Architecture Finder' },
 ]
 
 function TerminalMockup() {

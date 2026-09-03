@@ -99,7 +99,7 @@ function PlatformCard({ name, providers, frameworks, region, accessModel, descri
           {region ?? accessModel}
         </div>
         <a
-          href="/access"
+          href="/availability"
           style={{
             fontSize: '12px',
             color: 'var(--color-accent)',

@@ -38,10 +38,10 @@ const sections: NavSection[] = [
     label: 'Technology',
     links: [
       { href: '/architectures', label: 'Architectures' },
-      { href: '/learn/qubits', label: 'Qubits' },
-      { href: '/learn/error-correction', label: 'Error Correction' },
-      { href: '/technology/control-systems', label: 'Control Systems' },
-      { href: '/technology/cryogenics', label: 'Cryogenics' },
+      { href: '/what-is-a-qpu', label: 'What Is a QPU?' },
+      { href: '/glossary', label: 'Glossary' },
+      { href: '/benchmarks', label: 'Benchmarks' },
+      { href: '/roadmaps', label: 'Hardware Roadmaps' },
     ],
   },
   {
@@ -61,8 +61,8 @@ const sections: NavSection[] = [
     label: 'Developers',
     links: [
       { href: '/developers', label: 'Developer Overview' },
-      { href: '/developers/api', label: 'API' },
-      { href: '/developers/examples', label: 'Code Examples' },
+      { href: '/api', label: 'API' },
+      { href: '/frameworks', label: 'Code Examples' },
       { href: '/frameworks/qiskit', label: 'Qiskit' },
       { href: '/frameworks/cirq', label: 'Cirq' },
       { href: '/qpu-advisor', label: 'QPU Advisor' },
@@ -72,11 +72,11 @@ const sections: NavSection[] = [
     id: 'intelligence',
     label: 'Intelligence',
     links: [
-      { href: '/intelligence/news', label: 'Latest News' },
-      { href: '/intelligence/research', label: 'Research' },
-      { href: '/intelligence/launches', label: 'Processor Launches' },
+      { href: '/intelligence', label: 'Latest News' },
+      { href: '/intelligence', label: 'Research' },
+      { href: '/intelligence', label: 'Processor Launches' },
       { href: '/companies', label: 'Company Directory' },
-      { href: '/intelligence/roadmaps', label: 'Hardware Roadmaps' },
+      { href: '/roadmaps', label: 'Hardware Roadmaps' },
     ],
   },
   {
@@ -84,8 +84,8 @@ const sections: NavSection[] = [
     label: 'Resources',
     links: [
       { href: '/learn', label: 'Learn' },
-      { href: '/learn/what-is-a-qpu', label: 'What is a QPU?' },
-      { href: '/learn/qpu-vs-gpu', label: 'QPU vs GPU' },
+      { href: '/what-is-a-qpu', label: 'What is a QPU?' },
+      { href: '/qpu-vs-gpu', label: 'QPU vs GPU' },
       { href: '/glossary', label: 'Glossary' },
       { href: '/methodology', label: 'Methodology' },
     ],
