@@ -1,0 +1,88 @@
+import type { Framework } from '../types'
+
+export const frameworks: Framework[] = [
+  {
+    id: 'qiskit',
+    slug: 'qiskit',
+    name: 'Qiskit',
+    maintainer: 'IBM',
+    language: ['Python'],
+    supportedArchitectures: ['superconducting', 'trapped-ion', 'neutral-atom', 'photonic'],
+    cloudPlatforms: ['ibm-quantum'],
+    description:
+      'Qiskit is IBM\'s open-source quantum SDK for writing quantum programs, simulating circuits, and running experiments on IBM Quantum hardware. Qiskit Runtime packages workloads into optimized primitives (Sampler, Estimator) and handles transpilation to hardware-native gates. The most widely used quantum framework by install count.',
+    githubUrl: 'https://github.com/Qiskit/qiskit',
+    docsUrl: 'https://docs.quantum.ibm.com/',
+    version: '1.x',
+  },
+  {
+    id: 'cirq',
+    slug: 'cirq',
+    name: 'Cirq',
+    maintainer: 'Google Quantum AI',
+    language: ['Python'],
+    supportedArchitectures: ['superconducting', 'trapped-ion', 'photonic'],
+    cloudPlatforms: ['google-cloud-quantum'],
+    description:
+      'Cirq is Google\'s open-source framework for programming and simulating quantum circuits at the gate level. It is designed for near-term noisy intermediate-scale quantum (NISQ) devices and provides fine-grained control over gate schedules, qubit placement, and circuit optimization. Used internally by Google for quantum supremacy and error correction experiments.',
+    githubUrl: 'https://github.com/quantumlib/Cirq',
+    docsUrl: 'https://quantumai.google/cirq',
+    version: '1.x',
+  },
+  {
+    id: 'cuda-q',
+    slug: 'cuda-q',
+    name: 'CUDA-Q',
+    maintainer: 'NVIDIA',
+    language: ['Python', 'C++'],
+    supportedArchitectures: ['superconducting', 'trapped-ion', 'photonic'],
+    cloudPlatforms: ['aws-braket', 'azure-quantum', 'ibm-quantum'],
+    description:
+      'CUDA-Q (formerly CUDA Quantum) is NVIDIA\'s open-source platform for hybrid quantum-classical computing. It provides a unified programming model that allows quantum kernels to run on QPU simulators or real hardware, while classical co-processing runs on NVIDIA GPUs. Designed for high-performance quantum circuit simulation and quantum machine learning workloads.',
+    githubUrl: 'https://github.com/NVIDIA/cuda-quantum',
+    docsUrl: 'https://nvidia.github.io/cuda-quantum/',
+    version: '0.x',
+  },
+  {
+    id: 'pennylane',
+    slug: 'pennylane',
+    name: 'PennyLane',
+    maintainer: 'Xanadu',
+    language: ['Python'],
+    supportedArchitectures: ['superconducting', 'trapped-ion', 'neutral-atom', 'photonic', 'quantum-annealing'],
+    cloudPlatforms: ['aws-braket', 'azure-quantum', 'ibm-quantum'],
+    description:
+      'PennyLane is Xanadu\'s open-source framework specializing in quantum machine learning, quantum chemistry, and optimization. It uses an automatic differentiation ("autograd") approach that allows gradients of quantum circuits to be computed for training variational algorithms (VQE, QAOA, QNNs). Supports a wide range of hardware backends via plugins.',
+    githubUrl: 'https://github.com/PennyLaneAI/pennylane',
+    docsUrl: 'https://docs.pennylane.ai/',
+    version: '0.x',
+  },
+  {
+    id: 'qsharp',
+    slug: 'qsharp',
+    name: 'Q#',
+    maintainer: 'Microsoft',
+    language: ['Q#', 'Python'],
+    supportedArchitectures: ['superconducting', 'trapped-ion', 'topological'],
+    cloudPlatforms: ['azure-quantum'],
+    description:
+      'Q# is Microsoft\'s domain-specific language for quantum programming, designed to express quantum algorithms at a high level with built-in support for quantum data types, operations, and functions. The Azure Quantum Development Kit integrates Q# with Python and Jupyter notebooks. Q# targets both simulation and Azure Quantum hardware providers including IonQ, Quantinuum, and Rigetti.',
+    githubUrl: 'https://github.com/microsoft/qsharp',
+    docsUrl: 'https://learn.microsoft.com/azure/quantum/',
+    version: '1.x',
+  },
+  {
+    id: 'amazon-braket-sdk',
+    slug: 'amazon-braket-sdk',
+    name: 'Amazon Braket SDK',
+    maintainer: 'Amazon Web Services',
+    language: ['Python'],
+    supportedArchitectures: ['superconducting', 'trapped-ion', 'neutral-atom', 'quantum-annealing'],
+    cloudPlatforms: ['aws-braket'],
+    description:
+      'The Amazon Braket SDK is AWS\'s Python library for building and running quantum circuits on Amazon Braket hardware and simulators. It provides a unified interface to IonQ, Rigetti, QuEra, Oxford Quantum Circuits, and D-Wave systems. Braket tasks can be submitted to on-demand QPUs or to high-performance managed simulators (SV1, DM1, TN1) with pay-per-task pricing.',
+    githubUrl: 'https://github.com/amazon-braket/amazon-braket-sdk-python',
+    docsUrl: 'https://amazon-braket-sdk-python.readthedocs.io/',
+    version: '1.x',
+  },
+]
