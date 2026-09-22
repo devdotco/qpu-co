@@ -22,6 +22,8 @@ import type {
   QPUStatus,
 } from '../../types'
 
+import { getCmsArticles } from '@/lib/payload'
+
 import { qpus } from '../../data/qpus'
 import { providers } from '../../data/providers'
 import { architectures } from '../../data/architectures'
@@ -164,7 +166,10 @@ export async function getArticles(
   category?: string,
   limit?: number
 ): Promise<Article[]> {
-  let results = [...articles].sort(
+  // Seed articles plus anything published through the CMS. A CMS failure returns an
+  // empty list rather than throwing: the seed corpus must keep serving.
+  const cms = await getCmsArticles()
+  let results = [...articles, ...cms].sort(
     (a, b) =>
       new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   )
@@ -181,7 +186,9 @@ export async function getArticles(
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
-  return articles.find((a) => a.slug === slug) ?? null
+  const seed = articles.find((a) => a.slug === slug)
+  if (seed) return seed
+  return (await getCmsArticles()).find((a) => a.slug === slug) ?? null
 }
 
 // ── Roadmap Events ────────────────────────────────────────────────────────────

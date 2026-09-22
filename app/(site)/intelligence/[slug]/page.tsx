@@ -3,13 +3,18 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Clock, User, Calendar, Tag, Mail, ArrowLeft } from 'lucide-react'
 import { getArticleBySlug, getArticles } from '@/lib/data'
+import { isCmsArticle } from '@/lib/payload'
 import { formatDate } from '@/lib/utils'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { Separator } from '@/components/ui/Separator'
 import { Badge } from '@/components/ui/Badge'
 import { Card } from '@/components/ui/Card'
 import { CategoryChip, CATEGORY_META } from '@/components/intelligence/CategoryChip'
-import { ArticleContent, extractH2Headings } from '@/components/intelligence/ArticleContent'
+import {
+  ArticleContent,
+  extractH2Headings,
+  extractHtmlH2Headings,
+} from '@/components/intelligence/ArticleContent'
 import { TableOfContents } from '@/components/intelligence/TableOfContents'
 import { ArticleCard } from '@/components/intelligence/ArticleCard'
 import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/metadata'
@@ -51,8 +56,12 @@ export default async function ArticlePage({
 
   if (!article) notFound()
 
+  // CMS articles are sanitized HTML carrying inline SVG charts; seed articles are the
+  // Markdown-ish strings <ArticleContent> parses. Rendering one as the other produces
+  // either escaped tags or a wall of unparsed text, so they take different paths.
+  const html = isCmsArticle(article) ? article.contentHtml : null
   const content = article.content ?? article.excerpt
-  const tocItems = extractH2Headings(content)
+  const tocItems = html ? extractHtmlH2Headings(html) : extractH2Headings(content)
 
   // Related articles: same category, excluding current
   const related = allArticles
@@ -179,7 +188,40 @@ export default async function ArticlePage({
               <Separator className="mb-8" />
 
               {/* Article body */}
-              <ArticleContent content={content} className="max-w-prose" />
+              {html ? (
+                <div
+                  className="article-html max-w-prose"
+                  dangerouslySetInnerHTML={{ __html: html }}
+                />
+              ) : (
+                <ArticleContent content={content} className="max-w-prose" />
+              )}
+
+              {isCmsArticle(article) && article.cmsAuthor?.biography ? (
+                <aside className="mt-12 pt-6 border-t border-[var(--color-border)] max-w-prose">
+                  <p className="text-xs uppercase tracking-[0.14em] text-[var(--color-text-muted)]">
+                    About the author
+                  </p>
+                  <p className="mt-2 font-semibold text-[var(--color-text-primary)]">
+                    {article.cmsAuthor.name}
+                    {article.cmsAuthor.jobTitle ? (
+                      <span className="font-normal text-[var(--color-text-muted)]">
+                        {' '}
+                        — {article.cmsAuthor.jobTitle}
+                      </span>
+                    ) : null}
+                  </p>
+                  {article.cmsAuthor.biography
+                    .split(/\n{2,}/)
+                    .map((para) => para.trim())
+                    .filter(Boolean)
+                    .map((para, i) => (
+                      <p key={i} className="mt-2 text-sm leading-relaxed text-[var(--color-text-muted)]">
+                        {para}
+                      </p>
+                    ))}
+                </aside>
+              ) : null}
 
               {/* Tags footer */}
               {article.tags.length > 0 && (

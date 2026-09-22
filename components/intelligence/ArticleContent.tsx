@@ -38,6 +38,21 @@ export function extractH2Headings(content: string): { text: string; id: string }
     })
 }
 
+/**
+ * The same table of contents, read out of rendered HTML instead of Markdown.
+ *
+ * CMS articles arrive as HTML, and their headings already carry the ids the pipeline
+ * injected — so the anchors must come from the markup rather than be re-slugified, or
+ * every TOC link would point at an id that is not on the page.
+ */
+export function extractHtmlH2Headings(html: string): { text: string; id: string }[] {
+  return [...html.matchAll(/<h2\b([^>]*)>([\s\S]*?)<\/h2>/gi)].map((m) => {
+    const text = (m[2] ?? '').replace(/<[^>]+>/g, '').trim()
+    const id = /\bid\s*=\s*["']([^"']+)["']/i.exec(m[1] ?? '')?.[1] ?? slugifyHeading(text)
+    return { text, id }
+  })
+}
+
 interface ArticleContentProps {
   content: string
   className?: string

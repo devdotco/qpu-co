@@ -296,3 +296,57 @@ code, kbd, samp, pre {
   border: 1px solid transparent;
   white-space: nowrap;
 }
+
+/* ---------------------------------------------------------------------------
+   CMS-published article bodies.
+
+   Seed articles are rendered block by block by <ArticleContent>, which carries
+   its own classes. CMS articles are sanitized HTML injected whole, so the tags
+   arrive with nothing to hook and would otherwise fall back to browser defaults:
+   paragraphs with no spacing, headings that do not stand out, and links the
+   same colour as the body text.
+   ------------------------------------------------------------------------- */
+.article-html {
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: var(--color-text-secondary, inherit);
+}
+.article-html > * + * { margin-top: 1.15em; }
+.article-html p { margin: 0; }
+
+.article-html h2,
+.article-html h3,
+.article-html h4 {
+  color: var(--color-text-primary);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-top: 2.2em;
+  margin-bottom: -0.35em;
+  scroll-margin-top: 96px; /* the TOC links to these; clear the sticky header */
+}
+.article-html h2 { font-size: 1.5rem; font-weight: 650; }
+.article-html h3 { font-size: 1.2rem; font-weight: 600; }
+.article-html h4 { font-size: 1.05rem; font-weight: 600; }
+.article-html > :first-child { margin-top: 0; }
+
+.article-html a {
+  color: var(--color-accent, #4f8cff);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.article-html strong { color: var(--color-text-primary); font-weight: 600; }
+.article-html ul, .article-html ol { padding-left: 1.4em; }
+.article-html li { margin-top: 0.5em; }
+.article-html blockquote {
+  border-left: 3px solid var(--color-accent, #4f8cff);
+  padding-left: 18px;
+  color: var(--color-text-primary);
+}
+.article-html img { max-width: 100%; height: auto; display: block; }
+.article-html figure { margin: 2em 0; }
+.article-html hr {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  margin: 2.4em 0;
+}

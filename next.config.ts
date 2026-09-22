@@ -32,6 +32,13 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  /**
+   * Featured images on CMS-published articles are served by the CMS, so next/image
+   * needs it allow-listed or every hero throws at render time.
+   */
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "payload.dev.co" }],
+  },
   output: 'standalone',
 };
 
