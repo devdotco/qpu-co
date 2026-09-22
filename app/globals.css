@@ -311,8 +311,12 @@ code, kbd, samp, pre {
   line-height: 1.75;
   color: var(--color-text-secondary, inherit);
 }
+/* Order matters here, and so does specificity. `.article-html p { margin: 0 }` is
+   MORE specific than `.article-html > * + *`, so writing it that way cancelled the
+   spacing entirely and every paragraph ran into the next. Both rules below have the
+   same specificity, so the later one wins for the gap. */
+.article-html > * { margin: 0; }
 .article-html > * + * { margin-top: 1.15em; }
-.article-html p { margin: 0; }
 
 .article-html h2,
 .article-html h3,
