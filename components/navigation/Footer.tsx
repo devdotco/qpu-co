@@ -81,6 +81,13 @@ export default function Footer() {
           >
             Independent quantum-computing hardware intelligence and discovery.
           </p>
+          <a
+            href="tel:+12068646506"
+            className="mt-3 inline-block text-sm"
+            style={{ color: 'var(--color-text-muted)' }}
+          >
+            +1 (206) 864-6506
+          </a>
         </div>
 
         {/* 6-column link grid */}
